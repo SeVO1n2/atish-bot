@@ -1,0 +1,56 @@
+# index.js
+
+const Discord=require("discord.js");
+const toHex=require("colornames");
+
+module.exports={
+ name"createrole"
+ discription:"create A new role in the guild",
+ run:async(cilnet,message,args)=>{
+     const name=args.slice(1).join("")
+     const regex=!/[^a-zA-Z0-9]+/g.test(name)
+     if(!message.member.hasPermission("MANAGE_ROLES"))
+{
+        return message.chanell.send("You don,t hae enough pemissions")
+       }
+       if(!
+message.guild.me.has permission("MANAGE_ROLES")) {
+       return message.chennel.send("i don,t have enough permissions to do this")
+       }
+       if (!args[0]) {
+       return message.channel.send("`usage:=createrole<colorname><Name>`")
+      }
+      if(!name){
+      return message.channel.send("You need to  specify a name for your Role")
+     }
+     if(regex===false){
+     retun message.channell.send("That is not valid rolename. it can contain only letters and numbers")
+    }
+    if (name.length > 100) {
+    return message.channel.send("Your role can't be more than 100 characters long")
+    }
+    messge.guild.roles.create({
+         data: {
+             name: name,
+             color: toHex(args[0])
+         }
+    })
+    let embed = new Discord.MessageEmbed()
+    .setAuthor(`${message.author.username} - ($
+{message.author.id})`, message.author.displayAvatarURL())
+    .setColor("RANDOM")
+    .setDescription(`
+**Role: ** ${name}
+**Action: ** New Role Created
+**Role Color: ** ${args[0]}
+**Channel: ** ${message.channel}
+**By: ** $(message.member}
+      `)
+   message.channel.send(embed);
+    }
+}el.send("`Usage: =createrole <colorname> <Name`")
+         }
+         if (!name) {
+         return message.channel.send("That is not valid role name. lt can contain only letters and numbers")
+         }
+         if (name
